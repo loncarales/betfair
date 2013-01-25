@@ -1,0 +1,176 @@
+/**
+ * Header
+ */
+#header {
+	background-color: #333333;
+	color: #FFFFFF;
+	font-size: 20px;
+	font-weight: bold;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0, .4);
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0, .4);
+	border: 1px solid #333333;
+	background-image: -moz-linear-gradient(100% 100% 90deg, #333333, #444444);
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#444444), to(#333333));
+	padding: 10px;
+}
+
+#header-logout {
+	margin-top: 5px;
+	font-size: 12px;
+	float:right;
+}
+#header-logout a, #header-logout strong {color:#fff;}
+#header-logout a:hover, #header-logout a:active, #header-logout a:focus {color:#b4e3ff;}
+#logout {padding-left:18px; background:url("/img/app/tray-logout.gif") 0 50% no-repeat;}
+
+/**
+ * Menu
+ */
+ul.menu {
+	list-style: none;
+	margin: 0;
+	padding: 0 20px;
+	width: 1093px;
+	height: 35px;
+	font-size: 1.2em;
+	background-color: #222;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0, .4);
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0, .4);
+	background: url(/img/app/topnav_bg.gif) repeat-x;
+}
+ul.menu li {
+	float: left;
+	margin: 0;
+	padding: 0 15px 0 0;
+	position: relative;
+}
+ul.menu li a{
+	padding: 10px 5px;
+	color: #fff;
+	display: block;
+	text-decoration: none;
+	float: left;
+}
+ul.menu li a:hover{
+	background: url(/img/app/topnav_hover.gif) no-repeat center top;
+}
+ul.menu li span {
+	width: 17px;
+	height: 35px;
+	float: left;
+	background: url(/img/app/subnav_btn.gif) no-repeat center top;
+}
+ul.menu li span.subhover {background-position: center bottom; cursor: pointer;}
+ul.menu li ul.submenu {
+	list-style: none;
+	position: absolute;
+	left: 0; top: 35px;
+	background: #333;
+	margin: 0; padding: 0;
+	display: none;
+	float: left;
+	width: 170px;
+	-moz-border-radius-bottomleft: 5px;
+	-moz-border-radius-bottomright: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	border: 1px solid #111;
+	z-index:1;
+}
+ul.menu li ul.submenu li{
+	margin: 0; padding: 0;
+	border-top: 1px solid #252525;
+	border-bottom: 1px solid #444;
+	clear: both;
+	width: 170px;
+}
+html ul.menu li ul.submenu li a {
+	float: left;
+	width: 145px;
+	background: #333 url(/img/app/dropdown_linkbg.gif) no-repeat 10px center;
+	padding-left: 20px;
+}
+html ul.menu li ul.submenu li a:hover {
+	background: #222 url(/img/app/dropdown_linkbg.gif) no-repeat 10px center;
+}
+/**
+ * Misc
+ */
+#ajax-loader {
+   position:relative;
+   top:50%;
+   left:50%;
+   margin-top: 15px 0;
+   margin-left:-25px;
+}
+#all-sports, #active-sports {
+	padding: 0.5em;
+}
+/**
+ * Tabs
+ */
+#tabs { margin-top: 1em; }
+#tabs li .ui-icon-close { float: left; margin: 0.4em 0.2em 0 0; cursor: pointer; }
+/**
+ * Custom Icons
+ */
+span.no-markets span.dynatree-icon
+{
+    background-position: 0 0;
+	background-image: url("/img/app/no-markets.png");
+}
+span.market span.dynatree-icon
+{
+    background-position: 0 0;
+	background-image: url("/img/app/market.png");
+}
+a.level-1 {font-size:0.9em!important;}
+/**
+ * Section
+ */
+ .section {
+	background-color: #ffffff;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0, .4);
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0, .4);
+	border: 1px solid #cccccc;
+	padding: 5px;
+}
+.section-heading {
+	background-color: #eeeeee;
+	font-size: 16px;
+	font-weight: bold;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0, .4);
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0, .4);
+	border-bottom: 1px solid #cccccc;
+	background-image: -moz-linear-gradient(100% 100% 90deg, #eeeeee, #ffffff);
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffffff), to(#eeeeee));
+	padding: 10px;
+}
+.section-content p {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+/**
+ * Footer
+ */
+#footer {
+	font-size: 10px;
+	padding-top: 5px;
+	border-top: solid 1px #dddddd;
+}
+#copyright-statement {
+	text-align: right;
+}
+/**
+ * Override 
+ */
+div.prepend-top, .prepend-top {margin-top:1em;}

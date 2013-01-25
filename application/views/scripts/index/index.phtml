@@ -1,0 +1,91 @@
+<script>
+$(function() {
+	$.extend($.gritter.options, {
+	    class_name: 'gritter-dark', // for light notifications (can be added directly to $.gritter.add too)
+	    position: 'top-left', // possibilities: bottom-left, bottom-right, top-left, top-right
+		fade_in_speed: 100, // how fast notifications fade in (string or int)
+		fade_out_speed: 100, // how fast the notices fade out
+		sticky: false,
+		time: 4000 // hang on the screen for...
+	});
+	
+	$("#west").html(ajaxLoader);
+	$.getJSON("/sports/active", function(json) {
+		handleContent(json,"#west");
+	});
+	var tabCounter = 1;
+	$("#tabs").tabs({
+		tabTemplate: "<li><a href='#{href}'>#{label}</a> <span class='ui-icon ui-icon-close'>Remove Tab</span></li>",
+		add: function( event, ui ) {
+			var tabContent = "Tab " + tabCounter + " content.";
+			$( ui.panel ).append( "<p>" + tabContent + "</p>" );
+		}
+	});
+	/**
+	$( "#add-tab" )
+		.button()
+		.click(function() {
+			tabCounter++;
+			$("#tabs").tabs('add',"#tabs-"+tabCounter,'Some Title');
+	});
+	*/
+	// close icon: removing the tab on click
+	$( "#tabs span.ui-icon-close" ).live( "click", function() {
+		var index = $( "li", $("#tabs").tabs() ).index( $( this ).parent() );
+		$("#tabs").tabs( "remove", index );
+	});
+});
+</script>
+
+<div class="container">
+	<div id="container-top" class="span-12 prepend-top">
+		<div id="header">
+			<?php echo $this->headerTitle; ?>
+			<div id="header-logout">
+				<strong><a id="logout" href="/logout">Log out</a></strong>
+			</div>
+		</div>
+	</div>
+	
+	<div id="container-menu" class="span-12 prepend-top">
+		<ul class="menu span-12">
+			<li>
+				<a href="#">Events</a>
+				<ul class="submenu">
+					<li><a id="menu-active-sports" href="#">Active Events</a></li>
+					<li><a id="menu-all-sports" href="#">All Events</a></li>
+				</ul>
+			</li>
+			<li><a href="#">In-Play</a></li>
+			<li><a href="#">Next Games</a></li>
+			<li><a href="#">Active Bets</a></li>
+			<li><a href="#">Setup</a></li>
+		</ul>
+	</div>
+	
+	<div class="span-12 prepend-top">
+		<div id="west" class="span-3">
+		</div>
+		<div id="center" class="span-9 last">
+			<div id="tabs">
+				<ul>
+					<li><a href="#tabs-1">Dashboard</a></li>
+				</ul>
+				<div id="tabs-1">
+					<p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="container-footer" class="span-12 prepend-top">
+		<div id="footer">
+			<div class="span-6">				
+			 	Betfair Scalping is ....
+			</div>
+			<div class="span-6 last" id="copyright-statement">
+				&copy 2012 Internet Solutions, Ales Loncar, All Rights Reserved.
+			</div>
+		</div>
+	</div>
+</div>

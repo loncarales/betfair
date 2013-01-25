@@ -1,0 +1,15 @@
+<?php echo $this->doctype() . "\n"; ?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <?php echo $this->headMeta() . "\n"; ?>
+  <?php echo $this->headTitle(). "\n"; ?>
+  <?php echo $this->headLink() . "\n"; ?>
+  <?php if($this->jQuery()->isEnabled()) {
+            echo $this->jQuery();
+  		}?> 
+  <?php echo $this->headScript(); ?>
+</head>
+<body>
+  <?php echo $this->layout()->content ?>
+</body>
+</html>

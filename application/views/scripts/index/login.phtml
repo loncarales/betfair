@@ -1,0 +1,19 @@
+<div id="content">
+  <h1><?php echo $this->headerTitle; ?></h1>
+
+  <form id="loginForm" name="loginForm" action="/login-process" method="post">
+    <p>
+      <label for="username">Username:</label>
+      <input type="password" name="username" value="" id="username" />
+    </p>
+    <p>
+      <label for="password">Password:</label>
+      <input type="password" name="password" value="" id="password" />
+
+    </p>
+    <p>
+      <input type="submit" id="login" name="login" value="Login" />
+    </p>
+  </form>
+    <div id="message"><p class='error'><?php echo $this->flashMessage; ?></p></div>
+</div>

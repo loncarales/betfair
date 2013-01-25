@@ -1,0 +1,68 @@
+<script>
+$(function() {
+	$( "#accordion" ).accordion({
+        active: 1
+    });
+
+	applyAccordianHeight('#sports');
+	
+	$("#sports").dynatree({
+		onLazyRead: function(node) {
+			if (node.data.addClass == 'event') {
+				console.log(node.data);
+				node.appendAjax({
+					url: "/sports/event",
+					data: {
+						'eventId': node.data.key
+					},
+					cache: false,
+					success: function(node) {
+						console.log('ajax success');
+						console.log(this);
+					}
+				});
+			}
+		},
+		onActivate: function(node) {
+			if (node.data.addClass == 'market') {
+				var keyAr = node.data.key.split('|');
+				var marketId = keyAr[0];
+				var exchangeId = keyAr[1];
+				var event 	= node.parent.data.title;
+				var eventId = node.parent.data.key;
+				$.getJSON(
+					"/sports/market-info/",
+					{
+						'marketId': marketId,
+						'exchangeId': exchangeId,
+						'eventId': eventId
+					}, 
+					function(response) {
+						if (response.success) {
+							if (!response.event) {
+								var unique_id = $.gritter.add({
+									// (string | mandatory) the heading of the notification
+									title: response.title,
+									// (string | mandatory) the text inside the notification
+									text: response.text
+								});
+							}
+						} 
+				});
+			}
+		}	
+    });
+});
+</script>
+<div id="accordion">
+	<h3><a href="#">My Favorites</a></h3>
+	<div id="my-favorites">Nunc sapien odio, gravida dictum condimentum quis, fermentum sit amet tortor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla facilisi. Donec vitae metus a lacus porttitor semper eu vitae est. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras varius volutpat risus id iaculis. Suspendisse gravida ante dignissim lorem luctus aliquam at ut tellus. In et turpis libero, sit amet accumsan est. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin venenatis fringilla tortor, nec semper tortor consequat sit amet. Phasellus neque leo, convallis id faucibus quis, viverra in dolor. Quisque rhoncus nisi sed risus mattis condimentum. </div>
+	<h3><a href="#"><?php echo $this->sportsTitle; ?></a></h3>
+	<div id="sports">
+		<ul id="treeData" style="display: none;">
+		<?php foreach ($this->events as $event) : ?>
+			<li data="<?php echo $event['data']; ?>" class="<?php echo $event['class']; ?>" id="<?php echo $event['id']; ?>" title="<?php echo $event['title']; ?>"><?php echo $event['title']; ?></li>
+		<?php endforeach; ?>
+		</ul>
+	</div>
+</div>
